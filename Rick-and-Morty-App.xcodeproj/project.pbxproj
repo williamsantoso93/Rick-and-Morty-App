@@ -14,6 +14,9 @@
 		7A50E0FA29E4515E00E685C7 /* Rick_and_Morty_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A50E0F929E4515E00E685C7 /* Rick_and_Morty_AppTests.swift */; };
 		7A50E10429E4515E00E685C7 /* Rick_and_Morty_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A50E10329E4515E00E685C7 /* Rick_and_Morty_AppUITests.swift */; };
 		7A50E10629E4515E00E685C7 /* Rick_and_Morty_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A50E10529E4515E00E685C7 /* Rick_and_Morty_AppUITestsLaunchTests.swift */; };
+		7A50E11329E451ED00E685C7 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A50E11229E451ED00E685C7 /* Networking.swift */; };
+		7A50E11629E4521500E685C7 /* NetworkingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A50E11529E4521500E685C7 /* NetworkingTest.swift */; };
+		7A50E11829E45A9800E685C7 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A50E11729E45A9800E685C7 /* BaseResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		7A50E0FF29E4515E00E685C7 /* Rick-and-Morty-AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Rick-and-Morty-AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A50E10329E4515E00E685C7 /* Rick_and_Morty_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rick_and_Morty_AppUITests.swift; sourceTree = "<group>"; };
 		7A50E10529E4515E00E685C7 /* Rick_and_Morty_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rick_and_Morty_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7A50E11229E451ED00E685C7 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		7A50E11529E4521500E685C7 /* NetworkingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTest.swift; sourceTree = "<group>"; };
+		7A50E11729E45A9800E685C7 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				7A50E0E829E4515C00E685C7 /* Rick_and_Morty_AppApp.swift */,
+				7A50E11429E451F600E685C7 /* Resources */,
 				7A50E0EA29E4515C00E685C7 /* ContentView.swift */,
 				7A50E0EC29E4515E00E685C7 /* Assets.xcassets */,
 				7A50E0EE29E4515E00E685C7 /* Preview Content */,
@@ -114,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				7A50E0F929E4515E00E685C7 /* Rick_and_Morty_AppTests.swift */,
+				7A50E11529E4521500E685C7 /* NetworkingTest.swift */,
 			);
 			path = "Rick-and-Morty-AppTests";
 			sourceTree = "<group>";
@@ -125,6 +133,15 @@
 				7A50E10529E4515E00E685C7 /* Rick_and_Morty_AppUITestsLaunchTests.swift */,
 			);
 			path = "Rick-and-Morty-AppUITests";
+			sourceTree = "<group>";
+		};
+		7A50E11429E451F600E685C7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7A50E11229E451ED00E685C7 /* Networking.swift */,
+				7A50E11729E45A9800E685C7 /* BaseResponse.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +274,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A50E11329E451ED00E685C7 /* Networking.swift in Sources */,
 				7A50E0EB29E4515C00E685C7 /* ContentView.swift in Sources */,
 				7A50E0E929E4515C00E685C7 /* Rick_and_Morty_AppApp.swift in Sources */,
+				7A50E11829E45A9800E685C7 /* BaseResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A50E0FA29E4515E00E685C7 /* Rick_and_Morty_AppTests.swift in Sources */,
+				7A50E11629E4521500E685C7 /* NetworkingTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
