@@ -10,8 +10,8 @@ import Foundation
 struct Location: Codable {
     var id: Int
     var name: String
-    var type, dimension: String?
-    var residents: [String]?
+    var type, dimension: String
+    var residents: [String]
     var url: String
-    var created: String?
+    var created: String
 }

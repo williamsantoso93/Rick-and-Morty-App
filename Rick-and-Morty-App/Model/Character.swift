@@ -10,12 +10,12 @@ import Foundation
 struct Character: Codable {
     var id: Int
     var name: String
-    var status: String?
-    var species, type: String?
-    var gender: String?
-    var origin, location: CharacterLocation?
-    var image: String?
-    var episode: [String]?
+    var status: Status
+    var species, type: String
+    var gender: Gender
+    var origin, location: CharacterLocation
+    var image: String
+    var episode: [String]
     var url: String
     var created: String?
 }
@@ -23,6 +23,7 @@ struct Character: Codable {
 enum Gender: String, Codable {
     case female = "Female"
     case male = "Male"
+    case genderless = "Genderless"
     case unknown = "unknown"
 }
 

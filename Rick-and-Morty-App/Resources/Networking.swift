@@ -59,7 +59,16 @@ class Fetcher {
         case .success(let data):
             return data
         case .failure(let error):
-            print(error)
+            throw error
+        }
+    }
+    
+    static func getCharacterDetail(url: String) async throws -> Character {
+        let result: Result<Character, RequestError> = await Networking.sendRequest(url: url)
+        switch result {
+        case .success(let data):
+            return data
+        case .failure(let error):
             throw error
         }
     }
@@ -70,7 +79,16 @@ class Fetcher {
         case .success(let data):
             return data
         case .failure(let error):
-            print(error.localizedDescription)
+            throw error
+        }
+    }
+    
+    static func getLocationDetail(url: String) async throws -> Location {
+        let result: Result<Location, RequestError> = await Networking.sendRequest(url: url)
+        switch result {
+        case .success(let data):
+            return data
+        case .failure(let error):
             throw error
         }
     }
@@ -81,7 +99,16 @@ class Fetcher {
         case .success(let data):
             return data
         case .failure(let error):
-            print(error)
+            throw error
+        }
+    }
+    
+    static func getEpisodeDetail(url: String) async throws -> Episode {
+        let result: Result<Episode, RequestError> = await Networking.sendRequest(url: url)
+        switch result {
+        case .success(let data):
+            return data
+        case .failure(let error):
             throw error
         }
     }
