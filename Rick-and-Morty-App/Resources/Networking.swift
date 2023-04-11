@@ -34,10 +34,13 @@ class Networking {
             print("Response :\n", String(data: data, encoding: .utf8) ?? "")
             switch response.statusCode {
             case 200...299:
-                guard let decodedResponse = try? JSONDecoder().decode(T.self, from: data) else {
+                do {
+                    let decodedResponse = try JSONDecoder().decode(T.self, from: data)
+                    return .success(decodedResponse)
+                } catch {
+                    print(error)
                     return .failure(.decode)
                 }
-                return .success(decodedResponse)
             case 401:
                 return .failure(.unauthorized)
             default:
@@ -56,6 +59,7 @@ class Fetcher {
         case .success(let data):
             return data
         case .failure(let error):
+            print(error)
             throw error
         }
     }
@@ -66,6 +70,7 @@ class Fetcher {
         case .success(let data):
             return data
         case .failure(let error):
+            print(error.localizedDescription)
             throw error
         }
     }
@@ -76,6 +81,7 @@ class Fetcher {
         case .success(let data):
             return data
         case .failure(let error):
+            print(error)
             throw error
         }
     }
