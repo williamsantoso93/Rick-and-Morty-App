@@ -18,8 +18,8 @@ struct LocationListScreen: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                LazyVGrid(columns: columns, spacing: 23) {
-                    ForEach(0 ..< 200) { _ in
+                LazyVStack(spacing: 14) {
+                    ForEach(0 ..< 20) { _ in
                         NavigationLink {
                             LocationDetailScreen()
                         } label: {
@@ -27,6 +27,8 @@ struct LocationListScreen: View {
                         }
                     }
                 }
+                .padding(.horizontal, 20)
+                .padding(.vertical)
             }
             .navigationTitle("Location")
             .searchable(text: $searchText)
