@@ -29,6 +29,7 @@
 		7A57517D29E645B900C9CE7F /* CharacterRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57517C29E645B900C9CE7F /* CharacterRowView.swift */; };
 		7A57517F29E645C000C9CE7F /* LocationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57517E29E645C000C9CE7F /* LocationRowView.swift */; };
 		7A57518129E645CF00C9CE7F /* EpisodeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57518029E645CF00C9CE7F /* EpisodeRowView.swift */; };
+		7A57518329E648CD00C9CE7F /* CharacterFilterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57518229E648CD00C9CE7F /* CharacterFilterScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		7A57517C29E645B900C9CE7F /* CharacterRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRowView.swift; sourceTree = "<group>"; };
 		7A57517E29E645C000C9CE7F /* LocationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRowView.swift; sourceTree = "<group>"; };
 		7A57518029E645CF00C9CE7F /* EpisodeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRowView.swift; sourceTree = "<group>"; };
+		7A57518229E648CD00C9CE7F /* CharacterFilterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterFilterScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				7A57516D29E6455900C9CE7F /* CharacterListScreen.swift */,
+				7A57518229E648CD00C9CE7F /* CharacterFilterScreen.swift */,
 				7A57517C29E645B900C9CE7F /* CharacterRowView.swift */,
 				7A57517029E6456E00C9CE7F /* CharacterDetailScreen.swift */,
 			);
@@ -355,6 +358,7 @@
 				7A57517F29E645C000C9CE7F /* LocationRowView.swift in Sources */,
 				7A23CB8729E4EE7F00E477FD /* Character.swift in Sources */,
 				7A23CB8C29E4EECD00E477FD /* Episode.swift in Sources */,
+				7A57518329E648CD00C9CE7F /* CharacterFilterScreen.swift in Sources */,
 				7A57517329E6457A00C9CE7F /* LocationListScreen.swift in Sources */,
 				7A57517729E6458D00C9CE7F /* EpisodeListScreen.swift in Sources */,
 				7A57517529E6458200C9CE7F /* LocationDetailScreen.swift in Sources */,
