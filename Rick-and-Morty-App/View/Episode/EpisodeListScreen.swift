@@ -8,8 +8,33 @@
 import SwiftUI
 
 struct EpisodeListScreen: View {
+    @State private var searchText: String = ""
+    
+    let columns: [GridItem] = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+    ]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 23) {
+                    ForEach(0 ..< 200) { _ in
+                        NavigationLink {
+                            EpisodeDetailScreen()
+                        } label: {
+                            EpisodeRowView()
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Episode")
+            .searchable(text: $searchText)
+            .onSubmit {
+                
+            }
+            .submitLabel(.search)
+        }
     }
 }
 
