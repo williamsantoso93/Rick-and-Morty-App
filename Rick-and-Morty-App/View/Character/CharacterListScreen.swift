@@ -20,7 +20,7 @@ struct CharacterListScreen: View {
         NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(0 ..< 200) { _ in
+                    ForEach(0 ..< 10) { _ in
                         NavigationLink {
                             CharacterDetailScreen()
                         } label: {
@@ -28,7 +28,7 @@ struct CharacterListScreen: View {
                         }
                     }
                 }
-                .padding(.horizontal, 20)
+                .padding(20)
             }
             .navigationTitle("Character")
             .searchable(text: $searchText)
