@@ -15,8 +15,6 @@ struct CharacterDetailScreen: View {
                     AsyncImage(url: URL(string: "https://rickandmortyapi.com/api/character/avatar/1.jpeg")) { image in
                         image
                             .resizable()
-//                            .scaledToFit()
-//                            .scaledToFill()
                     } placeholder: {
                         ProgressView()
                     }

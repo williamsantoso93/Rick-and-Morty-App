@@ -30,6 +30,7 @@
 		7A57517F29E645C000C9CE7F /* LocationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57517E29E645C000C9CE7F /* LocationRowView.swift */; };
 		7A57518129E645CF00C9CE7F /* EpisodeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57518029E645CF00C9CE7F /* EpisodeRowView.swift */; };
 		7A57518329E648CD00C9CE7F /* CharacterFilterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57518229E648CD00C9CE7F /* CharacterFilterScreen.swift */; };
+		7A9789A429E7258200BECE94 /* TagLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9789A329E7258200BECE94 /* TagLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		7A57517E29E645C000C9CE7F /* LocationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRowView.swift; sourceTree = "<group>"; };
 		7A57518029E645CF00C9CE7F /* EpisodeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRowView.swift; sourceTree = "<group>"; };
 		7A57518229E648CD00C9CE7F /* CharacterFilterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterFilterScreen.swift; sourceTree = "<group>"; };
+		7A9789A329E7258200BECE94 /* TagLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 				7A57516F29E6455F00C9CE7F /* Character */,
 				7A57517B29E645A300C9CE7F /* Location */,
 				7A57517A29E6459B00C9CE7F /* Episode */,
+				7A9789A229E7256800BECE94 /* Helper */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -221,6 +224,14 @@
 				7A57517429E6458200C9CE7F /* LocationDetailScreen.swift */,
 			);
 			path = Location;
+			sourceTree = "<group>";
+		};
+		7A9789A229E7256800BECE94 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				7A9789A329E7258200BECE94 /* TagLayout.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,6 +380,7 @@
 				7A57518129E645CF00C9CE7F /* EpisodeRowView.swift in Sources */,
 				7A50E11829E45A9800E685C7 /* BaseResponse.swift in Sources */,
 				7A57517D29E645B900C9CE7F /* CharacterRowView.swift in Sources */,
+				7A9789A429E7258200BECE94 /* TagLayout.swift in Sources */,
 				7A57516E29E6455900C9CE7F /* CharacterListScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

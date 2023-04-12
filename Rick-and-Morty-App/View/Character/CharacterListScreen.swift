@@ -45,7 +45,7 @@ struct CharacterListScreen: View {
             }
             .sheet(isPresented: $showFilter) {
                 CharacterFilterScreen()
-                    .presentationDetents([.medium, .large])
+                    .presentationDetents([.height(500), .large])
                     .presentationDragIndicator(.visible)
             }
         }

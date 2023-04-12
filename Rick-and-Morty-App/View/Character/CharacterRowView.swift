@@ -15,7 +15,6 @@ struct CharacterRowView: View {
             AsyncImage(url: URL(string: "https://rickandmortyapi.com/api/character/avatar/1.jpeg")) { image in
                 image
                     .resizable()
-                    .scaledToFit()
             } placeholder: {
                 ProgressView()
             }
@@ -35,7 +34,7 @@ struct CharacterRowView: View {
         .background {
             Color(uiColor: UIColor(red: 0.929, green: 0.929, blue: 0.929, alpha: 1))
         }
-        .cornerRadius(16)
+        .cornerRadius(10)
     }
 }
 
