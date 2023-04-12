@@ -19,8 +19,8 @@ struct CharacterListScreen: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                LazyVGrid(columns: columns, spacing: 23) {
-                    ForEach(0 ..< 200) { _ in
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(0 ..< 10) { _ in
                         NavigationLink {
                             CharacterDetailScreen()
                         } label: {
@@ -28,6 +28,7 @@ struct CharacterListScreen: View {
                         }
                     }
                 }
+                .padding(20)
             }
             .navigationTitle("Character")
             .searchable(text: $searchText)
@@ -44,7 +45,7 @@ struct CharacterListScreen: View {
             }
             .sheet(isPresented: $showFilter) {
                 CharacterFilterScreen()
-                    .presentationDetents([.medium, .large])
+                    .presentationDetents([.height(500), .large])
                     .presentationDragIndicator(.visible)
             }
         }

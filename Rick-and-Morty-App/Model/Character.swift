@@ -20,17 +20,29 @@ struct Character: Codable {
     var created: String?
 }
 
-enum Gender: String, Codable {
-    case female = "Female"
+enum Gender: String, Codable, CaseIterable {
     case male = "Male"
+    case female = "Female"
     case genderless = "Genderless"
     case unknown = "unknown"
+    
+    static func allCasesRawValue() -> [String] {
+        self.allCases.map { item in
+            item.rawValue.capitalized
+        }
+    }
 }
 
-enum Status: String, Codable {
+enum Status: String, Codable, CaseIterable {
     case alive = "Alive"
     case dead = "Dead"
     case unknown = "unknown"
+    
+    static func allCasesRawValue() -> [String] {
+        self.allCases.map { item in
+            item.rawValue.capitalized
+        }
+    }
 }
 
 struct CharacterLocation: Codable {
