@@ -12,6 +12,7 @@ struct ContentView: View {
         TabView {
             CharacterListScreen()
                 .tabItem {
+                    //TODO: Add icon
 //                    Image("Character")
 //                        .renderingMode(.original)
 //                        .resizable()
@@ -21,10 +22,12 @@ struct ContentView: View {
                 }
             LocationListScreen()
                 .tabItem {
+                    //TODO: Add icon
                     Text("Location")
                 }
             EpisodeListScreen()
                 .tabItem {
+                    //TODO: Add icon
                     Text("Episode")
                 }
         }
