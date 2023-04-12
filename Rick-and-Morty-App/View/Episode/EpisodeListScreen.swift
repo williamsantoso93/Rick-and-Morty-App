@@ -18,8 +18,8 @@ struct EpisodeListScreen: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                LazyVGrid(columns: columns, spacing: 23) {
-                    ForEach(0 ..< 200) { _ in
+                LazyVStack(spacing: 14) {
+                    ForEach(0 ..< 20) { _ in
                         NavigationLink {
                             EpisodeDetailScreen()
                         } label: {
@@ -27,6 +27,8 @@ struct EpisodeListScreen: View {
                         }
                     }
                 }
+                .padding(.horizontal, 16)
+                .padding(.bottom, 24)
             }
             .navigationTitle("Episode")
             .searchable(text: $searchText)
