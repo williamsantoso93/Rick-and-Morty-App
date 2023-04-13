@@ -34,6 +34,34 @@ final class NetworkingTest: XCTestCase {
         
         XCTAssertTrue(!data.results.isEmpty)
     }
+    func test_CharacterList_GivenUrlFilterName_ShouldGetCharacterListSucceccfully() async throws {
+        let name = "rick"
+        let data = try await Fetcher.getCharacterList(name: name)
+        
+        XCTAssertTrue(!data.results.isEmpty)
+        XCTAssertTrue(data.results[0].name.lowercased().contains(name))
+    }
+    func test_CharacterList_GivenUrlFilterStatus_ShouldGetCharacterListSucceccfully() async throws {
+        let status = Status.alive
+        let data = try await Fetcher.getCharacterList(status: .alive)
+        
+        XCTAssertTrue(!data.results.isEmpty)
+        XCTAssertEqual(data.results[0].status, status)
+    }
+    func test_CharacterList_GivenUrlFilterSpecies_ShouldGetCharacterListSucceccfully() async throws {
+        let species = "human"
+        let data = try await Fetcher.getCharacterList(species: species)
+        
+        XCTAssertTrue(!data.results.isEmpty)
+        XCTAssertTrue(data.results[0].species.lowercased().contains(species))
+    }
+    func test_CharacterList_GivenUrlFilterGender_ShouldGetCharacterListSucceccfully() async throws {
+        let gender = Gender.male
+        let data = try await Fetcher.getCharacterList(gender: gender)
+        
+        XCTAssertTrue(!data.results.isEmpty)
+        XCTAssertEqual(data.results[0].gender, gender)
+    }
     func test_CharacterDetail_GivenCorrectUrl_ShouldGetDetailSucceccfully() async throws {
         let data = try await Fetcher.getCharacterDetail(url: "https://rickandmortyapi.com/api/character/2")
         
@@ -74,6 +102,13 @@ final class NetworkingTest: XCTestCase {
         
         XCTAssertTrue(!data.results.isEmpty)
     }
+    func test_LocationList_GivenUrlFilterName_ShouldGetCharacterListSucceccfully() async throws {
+        let name = "citadel"
+        let data = try await Fetcher.getLocationList(name: name)
+        
+        XCTAssertTrue(!data.results.isEmpty)
+        XCTAssertTrue(data.results[0].name.lowercased().contains(name))
+    }
     func test_LocationDetail_GivenCorrectUrl_ShouldGetDetailSucceccfully() async throws {
         let data = try await Fetcher.getLocationDetail(url: "https://rickandmortyapi.com/api/location/3")
         
@@ -109,6 +144,13 @@ final class NetworkingTest: XCTestCase {
         data = try await Fetcher.getEpisodeList(url: nextUrl)
         
         XCTAssertTrue(!data.results.isEmpty)
+    }
+    func test_EpisodeList_GivenUrlFilterName_ShouldGetCharacterListSucceccfully() async throws {
+        let name = "pilot"
+        let data = try await Fetcher.getEpisodeList(name: name)
+        
+        XCTAssertTrue(!data.results.isEmpty)
+        XCTAssertTrue(data.results[0].name.lowercased().contains(name))
     }
     func test_EpisodeDetail_GivenCorrectUrl_ShouldGetDetailSucceccfully() async throws {
         let data = try await Fetcher.getEpisodeDetail(url: "https://rickandmortyapi.com/api/episode/28")

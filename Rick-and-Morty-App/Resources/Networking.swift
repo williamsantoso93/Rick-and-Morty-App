@@ -17,12 +17,23 @@ enum RequestError: Error {
 }
 
 class Networking {
-    static func sendRequest<T: Decodable>(url: String) async -> Result<T, RequestError> {
-        let urlComponents = URLComponents(string: url)
+    static func sendRequest<T: Decodable>(url: String, parameters: [String: String]? = nil) async -> Result<T, RequestError> {
+        var urlComponents = URLComponents(string: url)
+        
+        if let parameters = parameters,
+           !parameters.isEmpty {
+            var queryItems = [URLQueryItem]()
+            for (key, value) in parameters {
+                queryItems.append(URLQueryItem(name: key, value: "\(value)"))
+            }
+            urlComponents?.queryItems = queryItems
+        }
         
         guard let url = urlComponents?.url else {
             return .failure(.invalidURL)
         }
+        
+        print("Endpoint : ", url )
         
         let request = URLRequest(url: url)
         
@@ -53,8 +64,22 @@ class Networking {
 }
 
 class Fetcher {
-    static func getCharacterList(url: String = "https://rickandmortyapi.com/api/character") async throws -> BaseList<Character> {
-        let result: Result<BaseList<Character>, RequestError> = await Networking.sendRequest(url: url)
+    static func getCharacterList(url: String = "https://rickandmortyapi.com/api/character", name: String? = nil, status: Status? = nil, species: String? = nil, gender: Gender? = nil) async throws -> BaseList<Character> {
+        var params: [String: String] = [:]
+        if let name = name {
+            params["name"] = name.lowercased()
+        }
+        if let status = status {
+            params["status"] = status.rawValue.lowercased()
+        }
+        if let species = species {
+            params["species"] = species.lowercased()
+        }
+        if let gender = gender {
+            params["gender"] = gender.rawValue.lowercased()
+        }
+        
+        let result: Result<BaseList<Character>, RequestError> = await Networking.sendRequest(url: url, parameters: params)
         switch result {
         case .success(let data):
             return data
@@ -73,8 +98,13 @@ class Fetcher {
         }
     }
     
-    static func getLocationList(url: String = "https://rickandmortyapi.com/api/location") async throws -> BaseList<Location> {
-        let result: Result<BaseList<Location>, RequestError> = await Networking.sendRequest(url: url)
+    static func getLocationList(url: String = "https://rickandmortyapi.com/api/location", name: String? = nil) async throws -> BaseList<Location> {
+        var params: [String: String] = [:]
+        if let name = name {
+            params["name"] = name
+        }
+        
+        let result: Result<BaseList<Location>, RequestError> = await Networking.sendRequest(url: url, parameters: params)
         switch result {
         case .success(let data):
             return data
@@ -93,8 +123,13 @@ class Fetcher {
         }
     }
     
-    static func getEpisodeList(url: String = "https://rickandmortyapi.com/api/episode") async throws -> BaseList<Episode> {
-        let result: Result<BaseList<Episode>, RequestError> = await Networking.sendRequest(url: url)
+    static func getEpisodeList(url: String = "https://rickandmortyapi.com/api/episode", name: String? = nil) async throws -> BaseList<Episode> {
+        var params: [String: String] = [:]
+        if let name = name {
+            params["name"] = name
+        }
+        
+        let result: Result<BaseList<Episode>, RequestError> = await Networking.sendRequest(url: url, parameters: params)
         switch result {
         case .success(let data):
             return data
