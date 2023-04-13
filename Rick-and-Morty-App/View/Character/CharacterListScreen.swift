@@ -21,11 +21,14 @@ struct CharacterListScreen: View {
         NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(0 ..< 10) { _ in
+                    ForEach(viewModel.list) { item in
                         NavigationLink {
                             CharacterDetailScreen()
                         } label: {
-                            CharacterRowView()
+                            CharacterRowView(character: item)
+                                .task {
+                                    await viewModel.getMore(id: item.id)
+                                }
                         }
                     }
                 }
@@ -37,6 +40,7 @@ struct CharacterListScreen: View {
                 
             }
             .submitLabel(.search)
+            .loading(viewModel.isLoading)
             .toolbar {
                 Button {
                     showFilter = true
@@ -48,6 +52,11 @@ struct CharacterListScreen: View {
                 CharacterFilterScreen()
                     .presentationDetents([.height(500), .large])
                     .presentationDragIndicator(.visible)
+            }
+            .task {
+                guard viewModel.list.isEmpty else { return }
+                
+                await viewModel.fetchList()
             }
         }
     }

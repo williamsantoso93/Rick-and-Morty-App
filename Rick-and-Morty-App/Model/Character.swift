@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol BaseModel {
+protocol BaseModel: Identifiable {
     var id: Int { get set }
 }
 
