@@ -9,6 +9,7 @@ import XCTest
 @testable import Rick_and_Morty_App
 
 final class NetworkingTest: XCTestCase {
+    //MARK: - Character
     func test_CharacterList_GivenCorrectUrl_ShouldGetCharacterListSucceccfully() async throws {
         let data = try await Fetcher.getCharacterList()
         
@@ -49,6 +50,7 @@ final class NetworkingTest: XCTestCase {
         XCTAssertTrue(!data.episode.isEmpty)
     }
     
+    //MARK: - Location
     func test_LocationList_GivenCorrectUrl_ShouldGetLocationListSucceccfully() async throws {
         let data = try await Fetcher.getLocationList()
         
@@ -65,14 +67,13 @@ final class NetworkingTest: XCTestCase {
     func test_LocationList_GivenNextCorrectUrl_ShouldGetLocationListSucceccfully() async throws {
         var data = try await Fetcher.getLocationList()
         
-            guard let nextUrl = data.info?.next else {
-                return XCTFail()
-            }
-            print(nextUrl)
-            data = try await Fetcher.getLocationList(url: nextUrl)
-            
-            XCTAssertTrue(!data.results.isEmpty)
+        guard let nextUrl = data.info?.next else {
+            return XCTFail()
         }
+        print(nextUrl)
+        data = try await Fetcher.getLocationList(url: nextUrl)
+        
+        XCTAssertTrue(!data.results.isEmpty)
     }
     func test_LocationDetail_GivenCorrectUrl_ShouldGetDetailSucceccfully() async throws {
         let data = try await Fetcher.getLocationDetail(url: "https://rickandmortyapi.com/api/location/3")
@@ -85,6 +86,7 @@ final class NetworkingTest: XCTestCase {
         XCTAssertTrue(!data.residents.isEmpty)
     }
     
+    //MARK: - Episode
     func test_EpisodeList_GivenCorrectUrl_ShouldGetEpisodeListSucceccfully() async throws {
         let data = try await Fetcher.getEpisodeList()
         
@@ -101,14 +103,13 @@ final class NetworkingTest: XCTestCase {
     func test_EpisodeList_GivenNextCorrectUrl_ShouldGetEpisodeListSucceccfully() async throws {
         var data = try await Fetcher.getEpisodeList()
         
-            guard let nextUrl = data.info?.next else {
-                return XCTFail()
-            }
-            print(nextUrl)
-            data = try await Fetcher.getEpisodeList(url: nextUrl)
-            
-            XCTAssertTrue(!data.results.isEmpty)
+        guard let nextUrl = data.info?.next else {
+            return XCTFail()
         }
+        print(nextUrl)
+        data = try await Fetcher.getEpisodeList(url: nextUrl)
+        
+        XCTAssertTrue(!data.results.isEmpty)
     }
     func test_EpisodeDetail_GivenCorrectUrl_ShouldGetDetailSucceccfully() async throws {
         let data = try await Fetcher.getEpisodeDetail(url: "https://rickandmortyapi.com/api/episode/28")
