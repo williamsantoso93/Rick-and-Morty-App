@@ -37,6 +37,7 @@ struct CharacterRowView: View {
                 
                 Text(character.species)
                     .font(.subheadline)
+                    .lineLimit(1)
             }
             .padding(6)
             .foregroundColor(.black)

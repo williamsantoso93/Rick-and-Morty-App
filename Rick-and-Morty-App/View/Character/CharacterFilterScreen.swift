@@ -10,8 +10,10 @@ import SwiftUI
 struct CharacterFilterScreen: View {
     @Environment(\.dismiss) var dismiss
     
+    var onApply: ((_ filter: CharacterFilter) -> Void)?
+    
     private let statusTypes: [String] = Status.allCasesRawValue()
-    @State private var selectedStatusType: Int = 0
+    @State private var selectedStatusType: Int? = nil
     
     private let speciesTypes: [String] = [
         "Alien",
@@ -19,10 +21,10 @@ struct CharacterFilterScreen: View {
         "Mythological Creature",
         "Human"
     ]
-    @State private var selectedSpeciesType: Int = 0
+    @State private var selectedSpeciesType: Int? = nil
     
     private let genderTypes: [String] = Gender.allCasesRawValue()
-    @State private var selectedGenderType: Int = 0
+    @State private var selectedGenderType: Int? = nil
     
     var body: some View {
         NavigationStack {
@@ -40,6 +42,22 @@ struct CharacterFilterScreen: View {
                 
                 Button {
                     dismiss()
+                    
+                    var status: Status?
+                    if let index = selectedStatusType {
+                        status = Status.allCases[index]
+                    }
+                    var species: String?
+                    if let index = selectedSpeciesType {
+                        species = speciesTypes[index].lowercased()
+                    }
+                    var gender: Gender?
+                    if let index = selectedGenderType {
+                        gender = Gender.allCases[index]
+                    }
+                    
+                    let filter = CharacterFilter(status: status, species: species, gender: gender)
+                    onApply?(filter)
                 } label: {
                     Text("Apply")
                         .font(.title3)
@@ -63,7 +81,7 @@ struct CharacterFilterScreen: View {
     struct FilterType: View {
         var title: String
         var types: [String]
-        @Binding var selectedIndex: Int
+        @Binding var selectedIndex: Int?
         
         var body: some View {
             VStack(alignment: .leading, spacing: 10.0) {
@@ -82,7 +100,7 @@ struct CharacterFilterScreen: View {
         struct ButtonType: View {
             var text: String
             var index: Int
-            @Binding var selectedIndex: Int
+            @Binding var selectedIndex: Int?
             
             var isSelected: Bool {
                 selectedIndex == index
@@ -93,7 +111,11 @@ struct CharacterFilterScreen: View {
             
             var body: some View {
                 Button {
-                    selectedIndex = index
+                    if isSelected {
+                        selectedIndex = nil
+                    } else {
+                        selectedIndex = index
+                    }
                 } label: {
                     Text(text)
                         .bold()

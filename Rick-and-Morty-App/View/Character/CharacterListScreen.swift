@@ -36,8 +36,15 @@ struct CharacterListScreen: View {
             }
             .navigationTitle("Character")
             .searchable(text: $searchText)
+            .refreshable {
+                Task {
+                    await viewModel.fetchNewList()
+                }
+            }
             .onSubmit {
-                
+                Task {
+                    await viewModel.fetchList(name: searchText, isNewList: true)
+                }
             }
             .submitLabel(.search)
             .loading(viewModel.isLoading)
@@ -49,9 +56,14 @@ struct CharacterListScreen: View {
                 }
             }
             .sheet(isPresented: $showFilter) {
-                CharacterFilterScreen()
-                    .presentationDetents([.height(500), .large])
-                    .presentationDragIndicator(.visible)
+                //TODO: binding filter
+                CharacterFilterScreen { filter in
+                    Task {
+                        await viewModel.fetchList(filter: filter, isNewList: true)
+                    }
+                }
+                .presentationDetents([.height(500), .large])
+                .presentationDragIndicator(.visible)
             }
             .task {
                 guard viewModel.list.isEmpty else { return }

@@ -53,3 +53,11 @@ struct CharacterLocation: Codable {
     var name: String
     var url: String
 }
+
+
+struct CharacterFilter {
+    var name: String?
+    var status: Status?
+    var species: String?
+    var gender: Gender?
+}

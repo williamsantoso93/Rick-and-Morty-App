@@ -33,6 +33,10 @@ class BaseListViewModel<T: BaseModel>: BaseViewModel {
     
     private var nextUrl: String? = nil
     
+    func removeList() {
+        _list.removeAll()
+    }
+    
     func setList(_ list: [T]) {
         if _list.isEmpty {
             _list = list
@@ -43,6 +47,11 @@ class BaseListViewModel<T: BaseModel>: BaseViewModel {
     
     func setNextUrl(_ nextUrl: String?) {
         self.nextUrl = nextUrl
+    }
+    
+    func fetchNewList(url: String = "") async {
+        _list = []
+        await fetchList(url: url)
     }
     
     func fetchList(url: String = "") async {
