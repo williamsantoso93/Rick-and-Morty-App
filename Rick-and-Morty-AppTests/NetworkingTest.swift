@@ -26,14 +26,13 @@ final class NetworkingTest: XCTestCase {
     func test_CharacterList_GivenNextCorrectUrl_ShouldGetCharacterListSucceccfully() async throws {
         var data = try await Fetcher.getCharacterList()
         
-            guard let nextUrl = data.info?.next else {
-                return XCTFail()
-            }
-            print(nextUrl)
-            data = try await Fetcher.getCharacterList(url: nextUrl)
-            
-            XCTAssertTrue(!data.results.isEmpty)
+        guard let nextUrl = data.info?.next else {
+            return XCTFail()
         }
+        
+        data = try await Fetcher.getCharacterList(url: nextUrl)
+        
+        XCTAssertTrue(!data.results.isEmpty)
     }
     func test_CharacterDetail_GivenCorrectUrl_ShouldGetDetailSucceccfully() async throws {
         let data = try await Fetcher.getCharacterDetail(url: "https://rickandmortyapi.com/api/character/2")
@@ -70,7 +69,7 @@ final class NetworkingTest: XCTestCase {
         guard let nextUrl = data.info?.next else {
             return XCTFail()
         }
-        print(nextUrl)
+        
         data = try await Fetcher.getLocationList(url: nextUrl)
         
         XCTAssertTrue(!data.results.isEmpty)
@@ -106,7 +105,7 @@ final class NetworkingTest: XCTestCase {
         guard let nextUrl = data.info?.next else {
             return XCTFail()
         }
-        print(nextUrl)
+        
         data = try await Fetcher.getEpisodeList(url: nextUrl)
         
         XCTAssertTrue(!data.results.isEmpty)

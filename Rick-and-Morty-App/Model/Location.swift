@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Location: Codable {
+struct Location: Codable, BaseModel {
     var id: Int
     var name: String
     var type, dimension: String

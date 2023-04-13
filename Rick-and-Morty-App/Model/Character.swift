@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct Character: Codable {
+protocol BaseModel {
+    var id: Int { get set }
+}
+
+struct Character: Codable, BaseModel {
     var id: Int
     var name: String
     var status: Status
