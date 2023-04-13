@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LocationListScreen: View {
+    @StateObject private var viewModel: BaseListViewModel = LocationListViewModel()
     @State private var searchText: String = ""
     
     let columns: [GridItem] = [

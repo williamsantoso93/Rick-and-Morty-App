@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Episode: Codable {
+struct Episode: Codable, BaseModel {
     var id: Int
     var name: String
     var airDate, episode: String

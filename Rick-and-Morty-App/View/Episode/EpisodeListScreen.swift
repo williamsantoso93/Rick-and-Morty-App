@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EpisodeListScreen: View {
+    @StateObject private var viewModel: BaseListViewModel = EpisodeListViewModel()
     @State private var searchText: String = ""
     
     let columns: [GridItem] = [
