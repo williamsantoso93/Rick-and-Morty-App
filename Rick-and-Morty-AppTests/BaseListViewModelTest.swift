@@ -17,7 +17,7 @@ class ModelSUT: BaseModel {
 }
 
 final class BaseListViewModelSUT: BaseListViewModel<ModelSUT> {
-    override func fetchList(url: String) {
+    override func fetchList(url: String = "") async {
         if url == "testUrl" {
             setNextUrl("nextUrl")
             
@@ -56,18 +56,18 @@ final class BaseListViewModelTest: XCTestCase {
         viewModel = BaseListViewModelSUT()
     }
     
-    func test_ListBase_GivenUrl_ShouldReturnList() {
-        viewModel.fetchList(url: url)
+    func test_ListBase_GivenUrl_ShouldReturnList() async {
+        await viewModel.fetchList(url: url)
         
         XCTAssertEqual(viewModel.list.count, 5)
     }
     
-    func test_ListBase_GivenNextUrl_ShouldReturnList() {
-        viewModel.fetchList(url: url)
+    func test_ListBase_GivenNextUrl_ShouldReturnList() async {
+        await viewModel.fetchList(url: url)
         XCTAssertEqual(viewModel.list.count, 5)
         XCTAssertEqual(viewModel.list.last?.id, 5)
         
-        viewModel.getMore(id: 5)
+        await viewModel.getMore(id: 5)
         XCTAssertEqual(viewModel.list.count, 10)
         XCTAssertEqual(viewModel.list.last?.id, 10)
     }

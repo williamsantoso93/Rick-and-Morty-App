@@ -64,7 +64,12 @@ class Networking {
 }
 
 class Fetcher {
-    static func getCharacterList(url: String = "https://rickandmortyapi.com/api/character", name: String? = nil, status: Status? = nil, species: String? = nil, gender: Gender? = nil) async throws -> BaseList<Character> {
+    static func getCharacterList(url: String = "", name: String? = nil, status: Status? = nil, species: String? = nil, gender: Gender? = nil) async throws -> BaseList<Character> {
+        var url = url
+        if url.isEmpty {
+            url = "https://rickandmortyapi.com/api/character"
+        }
+        
         var params: [String: String] = [:]
         if let name = name {
             params["name"] = name.lowercased()
@@ -98,7 +103,12 @@ class Fetcher {
         }
     }
     
-    static func getLocationList(url: String = "https://rickandmortyapi.com/api/location", name: String? = nil) async throws -> BaseList<Location> {
+    static func getLocationList(url: String = "", name: String? = nil) async throws -> BaseList<Location> {
+        var url = url
+        if url.isEmpty {
+            url = "https://rickandmortyapi.com/api/location"
+        }
+        
         var params: [String: String] = [:]
         if let name = name {
             params["name"] = name
@@ -123,7 +133,12 @@ class Fetcher {
         }
     }
     
-    static func getEpisodeList(url: String = "https://rickandmortyapi.com/api/episode", name: String? = nil) async throws -> BaseList<Episode> {
+    static func getEpisodeList(url: String = "", name: String? = nil) async throws -> BaseList<Episode> {
+        var url = url
+        if url.isEmpty {
+            url = "https://rickandmortyapi.com/api/episode"
+        }
+        
         var params: [String: String] = [:]
         if let name = name {
             params["name"] = name

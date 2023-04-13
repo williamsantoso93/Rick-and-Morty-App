@@ -45,11 +45,11 @@ class BaseListViewModel<T: BaseModel>: BaseViewModel {
         self.nextUrl = nextUrl
     }
     
-    func fetchList(url: String) {
+    func fetchList(url: String = "") async {
         
     }
     
-    func getMore(id: Int) {
+    func getMore(id: Int) async {
         guard let nextUrl = nextUrl else { return }
         
         guard !_list.isEmpty else { return }
@@ -57,7 +57,7 @@ class BaseListViewModel<T: BaseModel>: BaseViewModel {
         let lastData = _list[_list.count - 1]
         
         if id == lastData.id {
-            fetchList(url: nextUrl)
+            await fetchList(url: nextUrl)
         }
     }
 }

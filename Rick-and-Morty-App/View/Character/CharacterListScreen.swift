@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CharacterListScreen: View {
-    @StateObject private var viewModel: BaseListViewModel = CharacterListViewModel()
+    @StateObject private var viewModel: CharacterListViewModel = CharacterListViewModel()
     @State private var searchText: String = ""
     @State private var showFilter: Bool = false
     
