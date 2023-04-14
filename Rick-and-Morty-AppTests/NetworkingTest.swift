@@ -131,7 +131,7 @@ final class NetworkingTest: XCTestCase {
             let data = try await Fetcher.getEpisodeList(url: "https://123.com")
             XCTAssertTrue(data.results.isEmpty)
         } catch {
-            XCTAssertNotNil(error)
+            XCTFail(error.localizedDescription)
         }
     }
     func test_EpisodeList_GivenNextCorrectUrl_ShouldGetEpisodeListSucceccfully() async throws {
