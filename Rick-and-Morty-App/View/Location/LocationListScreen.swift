@@ -19,6 +19,9 @@ struct LocationListScreen: View {
                             LocationDetailScreen(location: item)
                         } label: {
                             LocationRowView(location: item)
+                                .task {
+                                    await viewModel.getMore(id: item.id)
+                                }
                         }
                     }
                 }
@@ -35,6 +38,13 @@ struct LocationListScreen: View {
             .onSubmit(of: .search) {
                 Task {
                     await viewModel.fetchList()
+                }
+            }
+            .onChange(of: viewModel.searchText) { newValue in
+                if newValue.isEmpty {
+                    Task {
+                        await viewModel.fetchNewList()
+                    }
                 }
             }
             .submitLabel(.search)

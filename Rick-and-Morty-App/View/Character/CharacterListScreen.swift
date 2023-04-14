@@ -45,6 +45,13 @@ struct CharacterListScreen: View {
                     await viewModel.fetchList()
                 }
             }
+            .onChange(of: viewModel.searchText) { newValue in
+                if newValue.isEmpty {
+                    Task {
+                        await viewModel.fetchNewList()
+                    }
+                }
+            }
             .submitLabel(.search)
             .loading(viewModel.isLoading)
             .toolbar {

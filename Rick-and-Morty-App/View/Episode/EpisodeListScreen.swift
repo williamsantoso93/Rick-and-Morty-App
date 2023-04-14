@@ -9,22 +9,19 @@ import SwiftUI
 
 struct EpisodeListScreen: View {
     @StateObject private var viewModel: BaseListViewModel = EpisodeListViewModel()
-    @State private var searchText: String = ""
-    
-    let columns: [GridItem] = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-    ]
     
     var body: some View {
         NavigationStack {
             ScrollView {
                 LazyVStack(spacing: 14) {
-                    ForEach(0 ..< 20) { _ in
+                    ForEach(viewModel.list) { item in
                         NavigationLink {
-                            EpisodeDetailScreen()
+                            EpisodeDetailScreen(episode: item)
                         } label: {
-                            EpisodeRowView()
+                            EpisodeRowView(episode: item)
+                                .task {
+                                    await viewModel.getMore(id: item.id)
+                                }
                         }
                     }
                 }
@@ -32,11 +29,31 @@ struct EpisodeListScreen: View {
                 .padding(.bottom, 24)
             }
             .navigationTitle("Episode")
-            .searchable(text: $searchText)
-            .onSubmit {
-                
+            .searchable(text: $viewModel.searchText)
+            .refreshable {
+                Task {
+                    await viewModel.fetchNewList()
+                }
+            }
+            .onSubmit(of: .search) {
+                Task {
+                    await viewModel.fetchList()
+                }
+            }
+            .onChange(of: viewModel.searchText) { newValue in
+                if newValue.isEmpty {
+                    Task {
+                        await viewModel.fetchNewList()
+                    }
+                }
             }
             .submitLabel(.search)
+            .loading(viewModel.isLoading)
+            .task {
+                guard viewModel.list.isEmpty else { return }
+                
+                await viewModel.fetchList()
+            }
         }
     }
 }
