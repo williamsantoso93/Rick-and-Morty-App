@@ -43,6 +43,7 @@
 		7A57518329E648CD00C9CE7F /* CharacterFilterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57518229E648CD00C9CE7F /* CharacterFilterScreen.swift */; };
 		7A9789A429E7258200BECE94 /* TagLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9789A329E7258200BECE94 /* TagLayout.swift */; };
 		7AF26B0229E964C20086652F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF26B0129E964C20086652F /* Extension.swift */; };
+		7AF26B0429E994520086652F /* LocationListViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF26B0329E994520086652F /* LocationListViewModelTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		7A57518229E648CD00C9CE7F /* CharacterFilterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterFilterScreen.swift; sourceTree = "<group>"; };
 		7A9789A329E7258200BECE94 /* TagLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLayout.swift; sourceTree = "<group>"; };
 		7AF26B0129E964C20086652F /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		7AF26B0329E994520086652F /* LocationListViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListViewModelTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 				7A1BB55129E790FF0028E6BC /* BaseViewModelTest.swift */,
 				7A1BB55329E799360028E6BC /* BaseListViewModelTest.swift */,
 				7A1BB56129E7B6890028E6BC /* CharacterViewModelTest.swift */,
+				7AF26B0329E994520086652F /* LocationListViewModelTest.swift */,
 			);
 			path = "Rick-and-Morty-AppTests";
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				7A1BB56229E7B6890028E6BC /* CharacterViewModelTest.swift in Sources */,
 				7A50E0FA29E4515E00E685C7 /* Rick_and_Morty_AppTests.swift in Sources */,
 				7A1BB55429E799360028E6BC /* BaseListViewModelTest.swift in Sources */,
+				7AF26B0429E994520086652F /* LocationListViewModelTest.swift in Sources */,
 				7A1BB55229E790FF0028E6BC /* BaseViewModelTest.swift in Sources */,
 				7A50E11629E4521500E685C7 /* NetworkingTest.swift in Sources */,
 			);
