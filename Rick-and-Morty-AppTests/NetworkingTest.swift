@@ -158,7 +158,9 @@ final class NetworkingTest: XCTestCase {
         XCTAssertEqual(data.id, 28)
         XCTAssertEqual(data.name, "The Ricklantis Mixup")
         XCTAssertEqual(data.airDate, "September 10, 2017")
-        XCTAssertEqual(data.episode, "S03E07")
+        XCTAssertEqual(data.episodeSeason, "S03E07")
+        XCTAssertEqual(data.season, "3")
+        XCTAssertEqual(data.episode, "7")
         XCTAssertEqual(data.created, "2017-11-10T12:56:36.618Z")
         XCTAssertTrue(!data.characters.isEmpty)
     }

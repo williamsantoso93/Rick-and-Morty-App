@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct EpisodeDetailScreen: View {
+    var episode: Episode
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                Text("Pilot")
+                Text(episode.name)
                     .font(.title)
                     .bold()
                 
@@ -33,7 +35,7 @@ struct EpisodeDetailScreen: View {
                         Text("Air Date: ")
                             .bold()
                         
-                        Text("2 Desember 2013")
+                        Text(episode.airDate)
                     }
                     .font(.title3)
                     
@@ -41,7 +43,7 @@ struct EpisodeDetailScreen: View {
                         Text("Season: ")
                             .bold()
                         
-                        Text("1")
+                        Text(episode.season)
                     }
                     .font(.callout)
                     
@@ -49,7 +51,7 @@ struct EpisodeDetailScreen: View {
                         Text("Episode: ")
                             .bold()
                         
-                        Text("1")
+                        Text(episode.episode)
                     }
                     .font(.callout)
                 }
@@ -60,8 +62,8 @@ struct EpisodeDetailScreen: View {
                         .bold()
                     
                     VStack(alignment: .leading, spacing: 0.0) {
-                        ForEach(0 ..< 5) { item in
-                            Text("https://rickandmortyapi.com/api/character/12")
+                        ForEach(episode.characters, id:\.self) { item in
+                            Text(item)
                                 .font(.callout)
                         }
                     }
@@ -72,13 +74,15 @@ struct EpisodeDetailScreen: View {
             .padding(.top, 35)
             .padding(.bottom, 20)
         }
-        .navigationTitle("Pilot")
+        .navigationTitle(episode.name)
         .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct EpisodeDetailScreen_Previews: PreviewProvider {
     static var previews: some View {
-        EpisodeDetailScreen()
+        let episode = Episode(id: 1, name: "Pilot", airDate: "December 2, 2013", episodeSeason: "S01E01", characters: ["https://rickandmortyapi.com/api/character/1", "https://rickandmortyapi.com/api/character/2", "https://rickandmortyapi.com/api/character/35", "https://rickandmortyapi.com/api/character/38", "https://rickandmortyapi.com/api/character/62", "https://rickandmortyapi.com/api/character/92", "https://rickandmortyapi.com/api/character/127", "https://rickandmortyapi.com/api/character/144", "https://rickandmortyapi.com/api/character/158", "https://rickandmortyapi.com/api/character/175", "https://rickandmortyapi.com/api/character/179", "https://rickandmortyapi.com/api/character/181", "https://rickandmortyapi.com/api/character/239", "https://rickandmortyapi.com/api/character/249", "https://rickandmortyapi.com/api/character/271", "https://rickandmortyapi.com/api/character/338", "https://rickandmortyapi.com/api/character/394", "https://rickandmortyapi.com/api/character/395", "https://rickandmortyapi.com/api/character/435"], url: "https://rickandmortyapi.com/api/episode/1", created: "2017-11-10T12:56:33.798Z")
+        
+        EpisodeDetailScreen(episode: episode)
     }
 }

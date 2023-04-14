@@ -52,7 +52,9 @@ class BaseListViewModel<T: BaseModel>: BaseViewModel {
     }
     
     func fetchNewList(url: String = "") async {
-        _list = []
+        DispatchQueue.main.async {
+            self._list = []
+        }
         await fetchList(url: url)
     }
     

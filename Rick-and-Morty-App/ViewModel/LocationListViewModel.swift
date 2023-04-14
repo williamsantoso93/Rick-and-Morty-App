@@ -21,6 +21,9 @@ class LocationListViewModel: BaseListViewModel<Location> {
             
             DispatchQueue.main.async {
                 self.setNextUrl(list.info?.next)
+                if url.isEmpty {
+                    self.removeList()
+                }
                 self.setList(list.results)
             }
         } catch {

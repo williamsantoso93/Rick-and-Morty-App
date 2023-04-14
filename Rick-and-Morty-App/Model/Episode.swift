@@ -10,7 +10,23 @@ import Foundation
 struct Episode: Codable, BaseModel {
     var id: Int
     var name: String
-    var airDate, episode: String
+    var airDate, episodeSeason: String
+    var season: String {
+        if let seasonIndex = episodeSeason.firstIndex(of: "S"),
+           let episodeIndex = episodeSeason.firstIndex(of: "E") {
+            let season = episodeSeason[seasonIndex..<episodeIndex].dropFirst()
+            return String(season).trimmingCharacters(in: CharacterSet(charactersIn: "0"))
+        }
+        return ""
+    }
+    
+    var episode: String {
+        if let episodeIndex = episodeSeason.firstIndex(of: "E") {
+            let episode = episodeSeason[episodeIndex...].dropFirst()
+            return String(episode).trimmingCharacters(in: CharacterSet(charactersIn: "0"))
+        }
+        return ""
+    }
     var characters: [String]
     var url: String
     var created: String
@@ -21,6 +37,7 @@ struct Episode: Codable, BaseModel {
     enum CodingKeys: String, CodingKey {
         case id, name
         case airDate = "air_date"
-        case episode, characters, url, created
+        case episodeSeason = "episode"
+        case characters, url, created
     }
 }
