@@ -71,7 +71,8 @@ class Fetcher {
         }
         
         var params: [String: String] = [:]
-        if let name = name {
+        if let name = name,
+           !name.isEmpty {
             params["name"] = name.lowercased()
         }
         if let status = status {
@@ -110,7 +111,8 @@ class Fetcher {
         }
         
         var params: [String: String] = [:]
-        if let name = name {
+        if let name = name,
+           !name.isEmpty {
             params["name"] = name
         }
         
@@ -140,7 +142,8 @@ class Fetcher {
         }
         
         var params: [String: String] = [:]
-        if let name = name {
+        if let name = name,
+           !name.isEmpty {
             params["name"] = name
         }
         

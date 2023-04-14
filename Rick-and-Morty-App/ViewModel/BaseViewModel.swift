@@ -31,6 +31,8 @@ class BaseListViewModel<T: BaseModel>: BaseViewModel {
         }
     }
     
+    @Published var searchText: String = ""
+    
     private var nextUrl: String? = nil
     
     func removeList() {

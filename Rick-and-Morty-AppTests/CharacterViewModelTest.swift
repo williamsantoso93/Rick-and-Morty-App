@@ -11,13 +11,16 @@ import XCTest
 final class CharacterListViewModelTest: XCTestCase {
     private var viewModel: CharacterListViewModel = CharacterListViewModel()
     
+    override func setUp() {
+        viewModel = CharacterListViewModel()
+    }
+    
     func test_CharacterList_GivenInitialState_ShouldGetListSucceccfully() async {
         await viewModel.fetchList()
         
         DispatchQueue.main.async {
             XCTAssertTrue(!self.viewModel.list.isEmpty)
             XCTAssertEqual(self.viewModel.list.count, 20)
-            print(self.viewModel.list.first)
         }
     }
     
@@ -33,7 +36,8 @@ final class CharacterListViewModelTest: XCTestCase {
     }
     
     func test_CharacterListFilter_GivenName_ShouldGetListSucceccfully() async {
-        await viewModel.fetchList(name: "rick")
+        viewModel.searchText = "rick"
+        await viewModel.fetchList()
         
         DispatchQueue.main.async {
             XCTAssertTrue(!self.viewModel.list.isEmpty)
@@ -41,7 +45,8 @@ final class CharacterListViewModelTest: XCTestCase {
     }
     
     func test_CharacterListFilter_GivenNameMoreData_ShouldGetListSucceccfully() async {
-        await viewModel.fetchList(name: "rick")
+        viewModel.searchText = "rick"
+        await viewModel.fetchList()
         
         await getMoreData()
         
@@ -51,15 +56,15 @@ final class CharacterListViewModelTest: XCTestCase {
     }
     
     func test_CharacterListFilter_GivenStatus_ShouldGetListSucceccfully() async {
-        await viewModel.fetchList(status: .alive)
+        let filter = CharacterFilter(status: .alive)
         
-        DispatchQueue.main.async {
-            XCTAssertTrue(!self.viewModel.list.isEmpty)
-        }
+        await getFilterList(by: filter)
     }
     
     func test_CharacterListFilter_GivenStatusMoreData_ShouldGetListSucceccfully() async {
-        await viewModel.fetchList(status: .alive)
+        let filter = CharacterFilter(status: .alive)
+        
+        await getFilterList(by: filter)
         
         await getMoreData()
         
@@ -69,15 +74,15 @@ final class CharacterListViewModelTest: XCTestCase {
     }
     
     func test_CharacterListFilter_GivenSpecies_ShouldGetListSucceccfully() async {
-        await viewModel.fetchList(species: "human")
+        let filter = CharacterFilter(species: "human")
         
-        DispatchQueue.main.async {
-            XCTAssertTrue(!self.viewModel.list.isEmpty)
-        }
+        await getFilterList(by: filter)
     }
     
     func test_CharacterListFilter_GivenSpeciesMoreData_ShouldGetListSucceccfully() async {
-        await viewModel.fetchList(species: "human")
+        let filter = CharacterFilter(species: "human")
+        
+        await getFilterList(by: filter)
         
         await getMoreData()
         
@@ -87,15 +92,15 @@ final class CharacterListViewModelTest: XCTestCase {
     }
     
     func test_CharacterListFilter_GivenGender_ShouldGetListSucceccfully() async {
-        await viewModel.fetchList(gender: .male)
+        let filter = CharacterFilter(gender: .male)
         
-        DispatchQueue.main.async {
-            XCTAssertTrue(!self.viewModel.list.isEmpty)
-        }
+        await getFilterList(by: filter)
     }
     
     func test_CharacterListFilter_GivenGenderMoreData_ShouldGetListSucceccfully() async {
-        await viewModel.fetchList(gender: .male)
+        let filter = CharacterFilter(gender: .male)
+        
+        await getFilterList(by: filter)
         
         await getMoreData()
         
@@ -109,6 +114,14 @@ final class CharacterListViewModelTest: XCTestCase {
             return XCTFail("no last id")
         }
         
-        await viewModel.getMore(id: id)
+        await self.viewModel.getMore(id: id)
+    }
+    
+    private func getFilterList(by filter: CharacterFilter) async {
+        await viewModel.fetchList(filter: filter)
+        
+        DispatchQueue.main.async {
+            XCTAssertTrue(!self.viewModel.list.isEmpty)
+        }
     }
 }

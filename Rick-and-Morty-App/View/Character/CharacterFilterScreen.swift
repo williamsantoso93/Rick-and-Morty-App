@@ -12,6 +12,16 @@ struct CharacterFilterScreen: View {
     
     var onApply: ((_ filter: CharacterFilter) -> Void)?
     
+    init(filter: CharacterFilter? = nil, onApply: ((_ filter: CharacterFilter) -> Void)? = nil) {
+        self.onApply = onApply
+        
+        if let filter = filter {
+            selectedStatusType = statusTypes.firstIndex(where: { $0 == filter.status?.rawValue ?? "" })
+            selectedSpeciesType = speciesTypes.firstIndex(where: { $0 == filter.species ?? "" })
+            selectedGenderType = genderTypes.firstIndex(where: { $0 == filter.gender?.rawValue ?? "" })
+        }
+    }
+    
     private let statusTypes: [String] = Status.allCasesRawValue()
     @State private var selectedStatusType: Int? = nil
     

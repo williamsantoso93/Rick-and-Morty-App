@@ -17,7 +17,7 @@ final class NetworkingTest: XCTestCase {
     }
     func test_CharacterList_GivenIcorrectUrl_ShouldGetError() async {
         do {
-            let data = try await Fetcher.getCharacterList(url: "")
+            let data = try await Fetcher.getCharacterList(url: "https://123.com")
             XCTAssertTrue(data.results.isEmpty)
         } catch {
             XCTAssertNotNil(error)
@@ -85,7 +85,7 @@ final class NetworkingTest: XCTestCase {
     }
     func test_LocationList_GivenIcorrectUrl_ShouldGetError() async {
         do {
-            let data = try await Fetcher.getLocationList(url: "")
+            let data = try await Fetcher.getLocationList(url: "https://123.com")
             XCTAssertTrue(data.results.isEmpty)
         } catch {
             XCTAssertNotNil(error)
@@ -128,7 +128,7 @@ final class NetworkingTest: XCTestCase {
     }
     func test_EpisodeList_GivenIcorrectUrl_ShouldGetError() async {
         do {
-            let data = try await Fetcher.getEpisodeList(url: "")
+            let data = try await Fetcher.getEpisodeList(url: "https://123.com")
             XCTAssertTrue(data.results.isEmpty)
         } catch {
             XCTAssertNotNil(error)

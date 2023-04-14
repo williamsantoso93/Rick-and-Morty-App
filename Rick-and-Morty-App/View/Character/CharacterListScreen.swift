@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CharacterListScreen: View {
     @StateObject private var viewModel: CharacterListViewModel = CharacterListViewModel()
-    @State private var searchText: String = ""
     @State private var showFilter: Bool = false
     
     let columns: [GridItem] = [
@@ -35,15 +34,15 @@ struct CharacterListScreen: View {
                 .padding(20)
             }
             .navigationTitle("Character")
-            .searchable(text: $searchText)
+            .searchable(text: $viewModel.searchText)
             .refreshable {
                 Task {
                     await viewModel.fetchNewList()
                 }
             }
-            .onSubmit {
+            .onSubmit(of: .search) {
                 Task {
-                    await viewModel.fetchList(name: searchText, isNewList: true)
+                    await viewModel.fetchList()
                 }
             }
             .submitLabel(.search)
@@ -56,10 +55,9 @@ struct CharacterListScreen: View {
                 }
             }
             .sheet(isPresented: $showFilter) {
-                //TODO: binding filter
-                CharacterFilterScreen { filter in
+                CharacterFilterScreen(filter: viewModel.filter) { filter in
                     Task {
-                        await viewModel.fetchList(filter: filter, isNewList: true)
+                        await viewModel.fetchList(filter: filter)
                     }
                 }
                 .presentationDetents([.height(500), .large])

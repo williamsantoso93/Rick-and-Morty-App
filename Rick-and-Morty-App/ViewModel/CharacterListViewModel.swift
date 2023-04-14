@@ -8,10 +8,16 @@
 import Foundation
 
 class CharacterListViewModel: BaseListViewModel<Character> {
-    var filter: CharacterFilter?
+    @Published var filter: CharacterFilter = CharacterFilter()
     
     override func fetchList(url: String = "") async {
         loading(true)
+        
+        guard !url.isEmpty else {
+            await fetchList(filter: self.filter)
+            return
+        }
+        
         do {
             let list = try await Fetcher.getCharacterList(url: url)
             
@@ -25,27 +31,16 @@ class CharacterListViewModel: BaseListViewModel<Character> {
         loading(false)
     }
     
-    func fetchList(name: String? = nil, status: Status? = nil, species: String? = nil, gender: Gender? = nil, isNewList: Bool = false) async {
-        loading(true)
-        do {
-            let list = try await Fetcher.getCharacterList(name: name, status: status, species: species, gender: gender)
-            
-            DispatchQueue.main.async {
-                self.setNextUrl(list.info?.next)
-                
-                if isNewList {
-                    self.removeList()
-                }
-                self.setList(list.results)
-            }
-        } catch {
-            print(error.localizedDescription)
+    func fetchList(filter: CharacterFilter?) async {
+        var filter = filter
+        filter?.name = searchText
+        
+        guard let filter = filter else { return }
+        
+        DispatchQueue.main.async {
+            self.filter = filter
         }
-        loading(false)
-    }
-    
-    func fetchList(filter: CharacterFilter, isNewList: Bool = false) async {
-        self.filter = filter
+        
         loading(true)
         do {
             let list = try await Fetcher.getCharacterList(name: filter.name, status: filter.status, species: filter.species, gender: filter.gender)
@@ -53,22 +48,12 @@ class CharacterListViewModel: BaseListViewModel<Character> {
             DispatchQueue.main.async {
                 self.setNextUrl(list.info?.next)
                 
-                if isNewList {
-                    self.removeList()
-                }
+                self.removeList()
                 self.setList(list.results)
             }
         } catch {
             print(error.localizedDescription)
         }
         loading(false)
-    }
-    
-    func fetchList(name: String? = nil, isNewList: Bool = false) async {
-        filter?.name = name
-        
-        if let filter = filter {
-            await fetchList(filter: filter, isNewList: isNewList)
-        }
     }
 }
