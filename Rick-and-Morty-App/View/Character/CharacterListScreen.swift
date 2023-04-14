@@ -22,7 +22,7 @@ struct CharacterListScreen: View {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(viewModel.list) { item in
                         NavigationLink {
-                            CharacterDetailScreen()
+                            CharacterDetailScreen(character: item)
                         } label: {
                             CharacterRowView(character: item)
                                 .task {
