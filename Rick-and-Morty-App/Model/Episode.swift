@@ -14,6 +14,9 @@ struct Episode: Codable, BaseModel {
     var characters: [String]
     var url: String
     var created: String
+    var createdFormatted: String {
+        created.toDate(formatString: "HH:mm, MMMM YYYY")
+    }
     
     enum CodingKeys: String, CodingKey {
         case id, name

@@ -9,22 +9,16 @@ import SwiftUI
 
 struct LocationListScreen: View {
     @StateObject private var viewModel: BaseListViewModel = LocationListViewModel()
-    @State private var searchText: String = ""
-    
-    let columns: [GridItem] = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-    ]
     
     var body: some View {
         NavigationStack {
             ScrollView {
                 LazyVStack(spacing: 14) {
-                    ForEach(0 ..< 20) { _ in
+                    ForEach(viewModel.list) { item in
                         NavigationLink {
-                            LocationDetailScreen()
+                            LocationDetailScreen(location: item)
                         } label: {
-                            LocationRowView()
+                            LocationRowView(location: item)
                         }
                     }
                 }
@@ -32,11 +26,24 @@ struct LocationListScreen: View {
                 .padding(.vertical)
             }
             .navigationTitle("Location")
-            .searchable(text: $searchText)
-            .onSubmit {
-                
+            .searchable(text: $viewModel.searchText)
+            .refreshable {
+                Task {
+                    await viewModel.fetchNewList()
+                }
+            }
+            .onSubmit(of: .search) {
+                Task {
+                    await viewModel.fetchList()
+                }
             }
             .submitLabel(.search)
+            .loading(viewModel.isLoading)
+            .task {
+                guard viewModel.list.isEmpty else { return }
+                
+                await viewModel.fetchList()
+            }
         }
     }
 }

@@ -14,4 +14,7 @@ struct Location: Codable, BaseModel {
     var residents: [String]
     var url: String
     var created: String
+    var createdFormatted: String {
+        created.toDate(formatString: "HH:mm, MMMM YYYY")
+    }
 }

@@ -74,7 +74,7 @@ struct CharacterDetailScreen: View {
             .padding(.horizontal, 20)
             .padding(.vertical, 40)
         }
-        .navigationTitle("Morty Smith")
+        .navigationTitle(character.name)
         .navigationBarTitleDisplayMode(.inline)
     }
     
