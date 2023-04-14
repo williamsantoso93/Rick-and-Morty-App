@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol BaseModel {
+protocol BaseModel: Identifiable {
     var id: Int { get set }
 }
 
@@ -52,4 +52,12 @@ enum Status: String, Codable, CaseIterable {
 struct CharacterLocation: Codable {
     var name: String
     var url: String
+}
+
+
+struct CharacterFilter {
+    var name: String?
+    var status: Status?
+    var species: String?
+    var gender: Gender?
 }

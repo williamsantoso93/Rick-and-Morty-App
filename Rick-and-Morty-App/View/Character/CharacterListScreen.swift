@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct CharacterListScreen: View {
-    @StateObject private var viewModel: BaseListViewModel = CharacterListViewModel()
-    @State private var searchText: String = ""
+    @StateObject private var viewModel: CharacterListViewModel = CharacterListViewModel()
     @State private var showFilter: Bool = false
     
     let columns: [GridItem] = [
@@ -21,22 +20,33 @@ struct CharacterListScreen: View {
         NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(0 ..< 10) { _ in
+                    ForEach(viewModel.list) { item in
                         NavigationLink {
                             CharacterDetailScreen()
                         } label: {
-                            CharacterRowView()
+                            CharacterRowView(character: item)
+                                .task {
+                                    await viewModel.getMore(id: item.id)
+                                }
                         }
                     }
                 }
                 .padding(20)
             }
             .navigationTitle("Character")
-            .searchable(text: $searchText)
-            .onSubmit {
-                
+            .searchable(text: $viewModel.searchText)
+            .refreshable {
+                Task {
+                    await viewModel.fetchNewList()
+                }
+            }
+            .onSubmit(of: .search) {
+                Task {
+                    await viewModel.fetchList()
+                }
             }
             .submitLabel(.search)
+            .loading(viewModel.isLoading)
             .toolbar {
                 Button {
                     showFilter = true
@@ -45,9 +55,18 @@ struct CharacterListScreen: View {
                 }
             }
             .sheet(isPresented: $showFilter) {
-                CharacterFilterScreen()
-                    .presentationDetents([.height(500), .large])
-                    .presentationDragIndicator(.visible)
+                CharacterFilterScreen(filter: viewModel.filter) { filter in
+                    Task {
+                        await viewModel.fetchList(filter: filter)
+                    }
+                }
+                .presentationDetents([.height(500), .large])
+                .presentationDragIndicator(.visible)
+            }
+            .task {
+                guard viewModel.list.isEmpty else { return }
+                
+                await viewModel.fetchList()
             }
         }
     }

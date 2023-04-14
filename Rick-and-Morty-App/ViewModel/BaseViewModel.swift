@@ -31,7 +31,13 @@ class BaseListViewModel<T: BaseModel>: BaseViewModel {
         }
     }
     
+    @Published var searchText: String = ""
+    
     private var nextUrl: String? = nil
+    
+    func removeList() {
+        _list.removeAll()
+    }
     
     func setList(_ list: [T]) {
         if _list.isEmpty {
@@ -45,11 +51,16 @@ class BaseListViewModel<T: BaseModel>: BaseViewModel {
         self.nextUrl = nextUrl
     }
     
-    func fetchList(url: String) {
+    func fetchNewList(url: String = "") async {
+        _list = []
+        await fetchList(url: url)
+    }
+    
+    func fetchList(url: String = "") async {
         
     }
     
-    func getMore(id: Int) {
+    func getMore(id: Int) async {
         guard let nextUrl = nextUrl else { return }
         
         guard !_list.isEmpty else { return }
@@ -57,7 +68,7 @@ class BaseListViewModel<T: BaseModel>: BaseViewModel {
         let lastData = _list[_list.count - 1]
         
         if id == lastData.id {
-            fetchList(url: nextUrl)
+            await fetchList(url: nextUrl)
         }
     }
 }
