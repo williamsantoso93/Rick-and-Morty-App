@@ -10,17 +10,8 @@ import SwiftUI
 struct CharacterFilterScreen: View {
     @Environment(\.dismiss) var dismiss
     
+    var filter: CharacterFilter? = nil
     var onApply: ((_ filter: CharacterFilter) -> Void)?
-    
-    init(filter: CharacterFilter? = nil, onApply: ((_ filter: CharacterFilter) -> Void)? = nil) {
-        self.onApply = onApply
-        
-        if let filter = filter {
-            selectedStatusType = statusTypes.firstIndex(where: { $0 == filter.status?.rawValue ?? "" })
-            selectedSpeciesType = speciesTypes.firstIndex(where: { $0 == filter.species ?? "" })
-            selectedGenderType = genderTypes.firstIndex(where: { $0 == filter.gender?.rawValue ?? "" })
-        }
-    }
     
     private let statusTypes: [String] = Status.allCasesRawValue()
     @State private var selectedStatusType: Int? = nil
@@ -85,6 +76,13 @@ struct CharacterFilterScreen: View {
             .navigationTitle("Filter")
             .navigationBarTitleDisplayMode(.large)
         }
+        .onAppear {
+            if let filter = filter {
+                selectedStatusType = statusTypes.firstIndex(where: { $0 == filter.status?.rawValue.capitalized ?? "" })
+                selectedSpeciesType = speciesTypes.firstIndex(where: { $0 == filter.species?.capitalized ?? "" })
+                selectedGenderType = genderTypes.firstIndex(where: { $0 == filter.gender?.rawValue.capitalized ?? "" })
+            }
+        }
     }
     
     
@@ -145,6 +143,6 @@ struct CharacterFilterScreen: View {
 
 struct CharacterFilterScreen_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterFilterScreen()
+        CharacterFilterScreen(filter: CharacterFilter(status: .unknown, species: "Human", gender: .unknown))
     }
 }

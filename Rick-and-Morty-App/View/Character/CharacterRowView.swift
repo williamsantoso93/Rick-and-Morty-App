@@ -24,6 +24,7 @@ struct CharacterRowView: View {
             AsyncImage(url: URL(string: character.image)) { image in
                 image
                     .resizable()
+                    .scaledToFill()
             } placeholder: {
                 ProgressView()
             }
