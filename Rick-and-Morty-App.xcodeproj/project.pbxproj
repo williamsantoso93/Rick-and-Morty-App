@@ -42,6 +42,7 @@
 		7A57518129E645CF00C9CE7F /* EpisodeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57518029E645CF00C9CE7F /* EpisodeRowView.swift */; };
 		7A57518329E648CD00C9CE7F /* CharacterFilterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57518229E648CD00C9CE7F /* CharacterFilterScreen.swift */; };
 		7A9789A429E7258200BECE94 /* TagLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9789A329E7258200BECE94 /* TagLayout.swift */; };
+		7AF26B0229E964C20086652F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF26B0129E964C20086652F /* Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		7A57518029E645CF00C9CE7F /* EpisodeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRowView.swift; sourceTree = "<group>"; };
 		7A57518229E648CD00C9CE7F /* CharacterFilterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterFilterScreen.swift; sourceTree = "<group>"; };
 		7A9789A329E7258200BECE94 /* TagLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLayout.swift; sourceTree = "<group>"; };
+		7AF26B0129E964C20086652F /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				7A50E11229E451ED00E685C7 /* Networking.swift */,
+				7AF26B0129E964C20086652F /* Extension.swift */,
 				7A50E11729E45A9800E685C7 /* BaseResponse.swift */,
 			);
 			path = Resources;
@@ -431,6 +434,7 @@
 				7A57517529E6458200C9CE7F /* LocationDetailScreen.swift in Sources */,
 				7A57517929E6459500C9CE7F /* EpisodeDetailScreen.swift in Sources */,
 				7A50E0EB29E4515C00E685C7 /* ContentView.swift in Sources */,
+				7AF26B0229E964C20086652F /* Extension.swift in Sources */,
 				7A50E0E929E4515C00E685C7 /* Rick_and_Morty_AppApp.swift in Sources */,
 				7A23CB8A29E4EEC700E477FD /* Location.swift in Sources */,
 				7A57518129E645CF00C9CE7F /* EpisodeRowView.swift in Sources */,

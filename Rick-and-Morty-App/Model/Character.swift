@@ -22,6 +22,13 @@ struct Character: Codable, BaseModel {
     var episode: [String]
     var url: String
     var created: String?
+    var createdFormatted: String {
+        guard let created = created else {
+            return "-"
+        }
+        
+        return created.toDate(formatString: "HH:mm, MMMM YYYY")
+    }
 }
 
 enum Gender: String, Codable, CaseIterable {
