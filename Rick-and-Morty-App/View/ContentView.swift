@@ -12,22 +12,31 @@ struct ContentView: View {
         TabView {
             CharacterListScreen()
                 .tabItem {
-                    //TODO: Add icon
-//                    Image("Character")
-//                        .renderingMode(.original)
-//                        .resizable()
-//                        .aspectRatio(contentMode: .fit)
-//                        .frame(width: 28, height: 28)
+                    Image("Character")
+                        .renderingMode(.template)
+                        .resizable()
+                        .scaledToFit()
+                    
                     Text("Character")
                 }
+            
             LocationListScreen()
                 .tabItem {
-                    //TODO: Add icon
+                    Image("Location")
+                        .renderingMode(.template)
+                        .resizable()
+                        .scaledToFit()
+                    
                     Text("Location")
                 }
+            
             EpisodeListScreen()
                 .tabItem {
-                    //TODO: Add icon
+                    Image("Episode")
+                        .renderingMode(.template)
+                        .resizable()
+                        .scaledToFit()
+                    
                     Text("Episode")
                 }
         }
