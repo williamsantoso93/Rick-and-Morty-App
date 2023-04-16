@@ -11,13 +11,12 @@ class CharacterListViewModel: BaseListViewModel<Character> {
     @Published var filter: CharacterFilter = CharacterFilter()
     
     override func fetchList(url: String = "") async {
-        loading(true)
-        
         guard !url.isEmpty else {
             await fetchList(filter: self.filter)
             return
         }
         
+        loading(true)
         do {
             let list = try await Fetcher.getCharacterList(url: url)
             
@@ -33,9 +32,15 @@ class CharacterListViewModel: BaseListViewModel<Character> {
     
     func fetchList(filter: CharacterFilter?) async {
         var filter = filter
-        filter?.name = searchText
+        if !searchText.isEmpty {
+            filter?.name = searchText
+        }
         
-        guard let filter = filter else { return }
+        guard
+            let filter = filter
+        else {
+            return
+        }
         
         DispatchQueue.main.async {
             self.filter = filter

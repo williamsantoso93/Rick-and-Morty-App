@@ -94,16 +94,6 @@ class Fetcher {
         }
     }
     
-    static func getCharacterDetail(url: String) async throws -> Character {
-        let result: Result<Character, RequestError> = await Networking.sendRequest(url: url)
-        switch result {
-        case .success(let data):
-            return data
-        case .failure(let error):
-            throw error
-        }
-    }
-    
     static func getLocationList(url: String = "", name: String? = nil) async throws -> BaseList<Location> {
         var url = url
         if url.isEmpty {
@@ -125,16 +115,6 @@ class Fetcher {
         }
     }
     
-    static func getLocationDetail(url: String) async throws -> Location {
-        let result: Result<Location, RequestError> = await Networking.sendRequest(url: url)
-        switch result {
-        case .success(let data):
-            return data
-        case .failure(let error):
-            throw error
-        }
-    }
-    
     static func getEpisodeList(url: String = "", name: String? = nil) async throws -> BaseList<Episode> {
         var url = url
         if url.isEmpty {
@@ -148,16 +128,6 @@ class Fetcher {
         }
         
         let result: Result<BaseList<Episode>, RequestError> = await Networking.sendRequest(url: url, parameters: params)
-        switch result {
-        case .success(let data):
-            return data
-        case .failure(let error):
-            throw error
-        }
-    }
-    
-    static func getEpisodeDetail(url: String) async throws -> Episode {
-        let result: Result<Episode, RequestError> = await Networking.sendRequest(url: url)
         switch result {
         case .success(let data):
             return data
