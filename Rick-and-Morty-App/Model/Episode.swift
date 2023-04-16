@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// A struct representing an episode.
 struct Episode: Codable, BaseModel {
     var id: Int
     var name: String

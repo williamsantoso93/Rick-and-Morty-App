@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// A struct representing a location.
 struct Location: Codable, BaseModel {
     var id: Int
     var name: String
