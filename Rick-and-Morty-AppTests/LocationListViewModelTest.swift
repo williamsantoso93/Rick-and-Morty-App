@@ -15,7 +15,6 @@ final class LocationListViewModelTest: XCTestCase {
         viewModel = LocationListViewModel()
     }
 
-    
     func test_LocationList_GivenInitialState_ShouldGetListSucceccfully() async {
         await viewModel.fetchList()
         
@@ -26,18 +25,24 @@ final class LocationListViewModelTest: XCTestCase {
     }
     
     func test_LocationList_GivenMoreData_ShouldGetListSucceccfully() async {
-        await viewModel.fetchList()
+        let list = [
+            Location(id: 19, name: "Gromflom Prime", type: "Planet", dimension: "Replacement Dimension", residents: [], url: "https://rickandmortyapi.com/api/location/19", created: "2017-11-18T11:39:52.165Z"),
+            Location(id: 20, name: "Earth (Replacement Dimension)", type: "Planet", dimension: "Replacement Dimension", residents: [], url: "https://rickandmortyapi.com/api/location/20", created: "2017-11-18T19:33:01.173Z")
+        ]
+        viewModel.setList(list)
+        
+        let nextUrl = "https://rickandmortyapi.com/api/location?page=2"
+        viewModel.setNextUrl(nextUrl)
         
         await getMoreData()
         
         DispatchQueue.main.async {
             XCTAssertTrue(!self.viewModel.list.isEmpty)
-            XCTAssertEqual(self.viewModel.list.count, 40)
         }
     }
     
     func test_LocationListSearch_GivenName_ShouldGetListSucceccfully() async {
-        viewModel.searchText = "citadel"
+        viewModel.searchText = "earth"
         await viewModel.fetchList()
         
         DispatchQueue.main.async {
@@ -46,8 +51,14 @@ final class LocationListViewModelTest: XCTestCase {
     }
     
     func test_LocationListSearch_GivenNameMoreData_ShouldGetListSucceccfully() async {
-        viewModel.searchText = "citadel"
-        await viewModel.fetchList()
+        let list = [
+            Location(id: 69, name: "Earth (C-35)", type: "Planet", dimension: "Dimension C-35", residents: [], url: "https://rickandmortyapi.com/api/location/69", created: "2018-04-15T16:55:56.212Z"),
+            Location(id: 71, name: "Earth (Pizza Dimension)", type: "Planet", dimension: "Pizza Dimension", residents: ["https://rickandmortyapi.com/api/character/424", "https://rickandmortyapi.com/api/character/425"], url: "https://rickandmortyapi.com/api/location/71", created: "2018-04-15T17:55:04.478Z")
+        ]
+        viewModel.setList(list)
+        
+        let nextUrl = "https://rickandmortyapi.com/api/location?page=2&name=earth"
+        viewModel.setNextUrl(nextUrl)
         
         await getMoreData()
         

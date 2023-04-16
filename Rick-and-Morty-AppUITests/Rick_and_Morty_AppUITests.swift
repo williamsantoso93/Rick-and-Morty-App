@@ -8,34 +8,104 @@
 import XCTest
 
 final class Rick_and_Morty_AppUITests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
+    func test_tabbar() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-
+        
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let tabBar = app.tabBars["Tab Bar"]
+        let locationButton = tabBar.buttons["Location"]
+        locationButton.tap()
+        
+        let episodeButton = tabBar.buttons["Episode"]
+        episodeButton.tap()
+        
+        let characterButton = tabBar.buttons["Character"]
+        characterButton.tap()
     }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+    
+    func test_characterList() throws {
+        // UI tests must launch the application that they test.
+        let app = XCUIApplication()
+        app.launch()
+        
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let tabBar = app.tabBars["Tab Bar"]
+        let characterButton = tabBar.buttons["Character"]
+        characterButton.tap()
+        
+        app.navigationBars["Character"].buttons["Edit"].tap()
+        app.windows.children(matching: .other).element(boundBy: 1).otherElements["PopoverDismissRegion"].tap()
+        app.buttons["Alive"].tap()
+        app.buttons["Male"].tap()
+        app.buttons["Apply"].tap()
+    }
+    
+    func test_characterDetail() throws {
+        // UI tests must launch the application that they test.
+        let app = XCUIApplication()
+        app.launch()
+        
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let tabBar = app.tabBars["Tab Bar"]
+        let characterButton = tabBar.buttons["Character"]
+        characterButton.tap()
+        
+        let elementsQuery = app.scrollViews.otherElements
+        elementsQuery.buttons["Rick Sanchez, Human"].tap()
+        app.navigationBars["Rick Sanchez"].buttons["Character"].tap()
+    }
+    
+    func test_LocationList() throws {
+        // UI tests must launch the application that they test.
+        let app = XCUIApplication()
+        app.launch()
+        
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let tabBar = app.tabBars["Tab Bar"]
+        let locationButton = tabBar.buttons["Location"]
+        locationButton.tap()
+    }
+    
+    func test_LocationDetail() throws {
+        // UI tests must launch the application that they test.
+        let app = XCUIApplication()
+        app.launch()
+        
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let tabBar = app.tabBars["Tab Bar"]
+        let locationButton = tabBar.buttons["Location"]
+        locationButton.tap()
+        
+        let elementsQuery = app.scrollViews.otherElements
+        elementsQuery.buttons.containing(.staticText, identifier:"Earth (C-137)").element.tap()
+        app.navigationBars["Earth (C-137)"].buttons["Location"].tap()
+    }
+    
+    func test_EpisodeList() throws {
+        // UI tests must launch the application that they test.
+        let app = XCUIApplication()
+        app.launch()
+        
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let tabBar = app.tabBars["Tab Bar"]
+        let episodeButton = tabBar.buttons["Episode"]
+        episodeButton.tap()
+    }
+    
+    func test_EpisodeDetail() throws {
+        // UI tests must launch the application that they test.
+        let app = XCUIApplication()
+        app.launch()
+        
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let tabBar = app.tabBars["Tab Bar"]
+        let episodeButton = tabBar.buttons["Episode"]
+        episodeButton.tap()
+        
+        let elementsQuery = app.scrollViews.otherElements
+        elementsQuery.buttons["Pilot, season: 1\nepisode: 1, Air Date:\nDecember 2, 2013"].tap()
+        app.navigationBars["Pilot"].buttons["Episode"].tap()
     }
 }

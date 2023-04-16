@@ -18,12 +18,12 @@
 		7A23CB8729E4EE7F00E477FD /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A23CB8629E4EE7F00E477FD /* Character.swift */; };
 		7A23CB8A29E4EEC700E477FD /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A23CB8929E4EEC700E477FD /* Location.swift */; };
 		7A23CB8C29E4EECD00E477FD /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A23CB8B29E4EECD00E477FD /* Episode.swift */; };
+		7A31636329EBBB3B006E8D98 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7A31636229EBBB3B006E8D98 /* README.md */; };
 		7A4789D329E99BE200559AF7 /* EpisodeListViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4789D229E99BE200559AF7 /* EpisodeListViewModelTest.swift */; };
 		7A50E0E929E4515C00E685C7 /* Rick_and_Morty_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A50E0E829E4515C00E685C7 /* Rick_and_Morty_AppApp.swift */; };
 		7A50E0EB29E4515C00E685C7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A50E0EA29E4515C00E685C7 /* ContentView.swift */; };
 		7A50E0ED29E4515E00E685C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A50E0EC29E4515E00E685C7 /* Assets.xcassets */; };
 		7A50E0F029E4515E00E685C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A50E0EF29E4515E00E685C7 /* Preview Assets.xcassets */; };
-		7A50E0FA29E4515E00E685C7 /* Rick_and_Morty_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A50E0F929E4515E00E685C7 /* Rick_and_Morty_AppTests.swift */; };
 		7A50E10429E4515E00E685C7 /* Rick_and_Morty_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A50E10329E4515E00E685C7 /* Rick_and_Morty_AppUITests.swift */; };
 		7A50E10629E4515E00E685C7 /* Rick_and_Morty_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A50E10529E4515E00E685C7 /* Rick_and_Morty_AppUITestsLaunchTests.swift */; };
 		7A50E11329E451ED00E685C7 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A50E11229E451ED00E685C7 /* Networking.swift */; };
@@ -73,6 +73,7 @@
 		7A23CB8629E4EE7F00E477FD /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		7A23CB8929E4EEC700E477FD /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		7A23CB8B29E4EECD00E477FD /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		7A31636229EBBB3B006E8D98 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7A4789D229E99BE200559AF7 /* EpisodeListViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeListViewModelTest.swift; sourceTree = "<group>"; };
 		7A50E0E529E4515C00E685C7 /* Rick-and-Morty-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rick-and-Morty-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A50E0E829E4515C00E685C7 /* Rick_and_Morty_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rick_and_Morty_AppApp.swift; sourceTree = "<group>"; };
@@ -80,7 +81,6 @@
 		7A50E0EC29E4515E00E685C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A50E0EF29E4515E00E685C7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7A50E0F529E4515E00E685C7 /* Rick-and-Morty-AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Rick-and-Morty-AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7A50E0F929E4515E00E685C7 /* Rick_and_Morty_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rick_and_Morty_AppTests.swift; sourceTree = "<group>"; };
 		7A50E0FF29E4515E00E685C7 /* Rick-and-Morty-AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Rick-and-Morty-AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A50E10329E4515E00E685C7 /* Rick_and_Morty_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rick_and_Morty_AppUITests.swift; sourceTree = "<group>"; };
 		7A50E10529E4515E00E685C7 /* Rick_and_Morty_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rick_and_Morty_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -159,6 +159,7 @@
 		7A50E0DC29E4515B00E685C7 = {
 			isa = PBXGroup;
 			children = (
+				7A31636229EBBB3B006E8D98 /* README.md */,
 				7A50E0E729E4515C00E685C7 /* Rick-and-Morty-App */,
 				7A50E0F829E4515E00E685C7 /* Rick-and-Morty-AppTests */,
 				7A50E10229E4515E00E685C7 /* Rick-and-Morty-AppUITests */,
@@ -201,7 +202,6 @@
 		7A50E0F829E4515E00E685C7 /* Rick-and-Morty-AppTests */ = {
 			isa = PBXGroup;
 			children = (
-				7A50E0F929E4515E00E685C7 /* Rick_and_Morty_AppTests.swift */,
 				7A50E11529E4521500E685C7 /* NetworkingTest.swift */,
 				7A1BB55129E790FF0028E6BC /* BaseViewModelTest.swift */,
 				7A1BB55329E799360028E6BC /* BaseListViewModelTest.swift */,
@@ -387,6 +387,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A31636329EBBB3B006E8D98 /* README.md in Resources */,
 				7A50E0F029E4515E00E685C7 /* Preview Assets.xcassets in Resources */,
 				7A50E0ED29E4515E00E685C7 /* Assets.xcassets in Resources */,
 			);
@@ -445,7 +446,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A1BB56229E7B6890028E6BC /* CharacterViewModelTest.swift in Sources */,
-				7A50E0FA29E4515E00E685C7 /* Rick_and_Morty_AppTests.swift in Sources */,
 				7A1BB55429E799360028E6BC /* BaseListViewModelTest.swift in Sources */,
 				7A4789D329E99BE200559AF7 /* EpisodeListViewModelTest.swift in Sources */,
 				7AF26B0429E994520086652F /* LocationListViewModelTest.swift in Sources */,

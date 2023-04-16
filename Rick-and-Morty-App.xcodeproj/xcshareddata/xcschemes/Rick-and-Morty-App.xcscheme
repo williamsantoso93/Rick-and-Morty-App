@@ -26,8 +26,15 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
+      shouldUseLaunchSchemeArgsEnv = "NO"
       codeCoverageEnabled = "YES">
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "isTest"
+            value = "1"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <Testables>
          <TestableReference
             skipped = "NO"
@@ -39,11 +46,16 @@
                BlueprintName = "Rick-and-Morty-AppTests"
                ReferencedContainer = "container:Rick-and-Morty-App.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "Rick_and_Morty_AppTests">
-               </Test>
-            </SkippedTests>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7A50E0FE29E4515E00E685C7"
+               BuildableName = "Rick-and-Morty-AppUITests.xctest"
+               BlueprintName = "Rick-and-Morty-AppUITests"
+               ReferencedContainer = "container:Rick-and-Morty-App.xcodeproj">
+            </BuildableReference>
          </TestableReference>
       </Testables>
    </TestAction>

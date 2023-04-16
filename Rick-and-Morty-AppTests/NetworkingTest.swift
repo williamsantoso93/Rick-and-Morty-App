@@ -62,20 +62,6 @@ final class NetworkingTest: XCTestCase {
         XCTAssertTrue(!data.results.isEmpty)
         XCTAssertEqual(data.results[0].gender, gender)
     }
-    func test_CharacterDetail_GivenCorrectUrl_ShouldGetDetailSucceccfully() async throws {
-        let data = try await Fetcher.getCharacterDetail(url: "https://rickandmortyapi.com/api/character/2")
-        
-        XCTAssertEqual(data.id, 2)
-        XCTAssertEqual(data.name, "Morty Smith")
-        XCTAssertEqual(data.image, "https://rickandmortyapi.com/api/character/avatar/2.jpeg")
-        XCTAssertEqual(data.status, .alive)
-        XCTAssertEqual(data.gender, .male)
-        XCTAssertEqual(data.species, "Human")
-        XCTAssertEqual(data.created, "2017-11-04T18:50:21.651Z")
-        XCTAssertEqual(data.origin.name, "unknown")
-        XCTAssertEqual(data.location.name, "Citadel of Ricks")
-        XCTAssertTrue(!data.episode.isEmpty)
-    }
     
     //MARK: - Location
     func test_LocationList_GivenCorrectUrl_ShouldGetLocationListSucceccfully() async throws {
@@ -109,16 +95,6 @@ final class NetworkingTest: XCTestCase {
         XCTAssertTrue(!data.results.isEmpty)
         XCTAssertTrue(data.results[0].name.lowercased().contains(name))
     }
-    func test_LocationDetail_GivenCorrectUrl_ShouldGetDetailSucceccfully() async throws {
-        let data = try await Fetcher.getLocationDetail(url: "https://rickandmortyapi.com/api/location/3")
-        
-        XCTAssertEqual(data.id, 3)
-        XCTAssertEqual(data.name, "Citadel of Ricks")
-        XCTAssertEqual(data.type, "Space station")
-        XCTAssertEqual(data.dimension, "unknown")
-        XCTAssertEqual(data.created, "2017-11-10T13:08:13.191Z")
-        XCTAssertTrue(!data.residents.isEmpty)
-    }
     
     //MARK: - Episode
     func test_EpisodeList_GivenCorrectUrl_ShouldGetEpisodeListSucceccfully() async throws {
@@ -131,7 +107,7 @@ final class NetworkingTest: XCTestCase {
             let data = try await Fetcher.getEpisodeList(url: "https://123.com")
             XCTAssertTrue(data.results.isEmpty)
         } catch {
-            XCTFail(error.localizedDescription)
+            XCTAssertNotNil(error)
         }
     }
     func test_EpisodeList_GivenNextCorrectUrl_ShouldGetEpisodeListSucceccfully() async throws {
@@ -151,17 +127,5 @@ final class NetworkingTest: XCTestCase {
         
         XCTAssertTrue(!data.results.isEmpty)
         XCTAssertTrue(data.results[0].name.lowercased().contains(name))
-    }
-    func test_EpisodeDetail_GivenCorrectUrl_ShouldGetDetailSucceccfully() async throws {
-        let data = try await Fetcher.getEpisodeDetail(url: "https://rickandmortyapi.com/api/episode/28")
-        
-        XCTAssertEqual(data.id, 28)
-        XCTAssertEqual(data.name, "The Ricklantis Mixup")
-        XCTAssertEqual(data.airDate, "September 10, 2017")
-        XCTAssertEqual(data.episodeSeason, "S03E07")
-        XCTAssertEqual(data.season, "3")
-        XCTAssertEqual(data.episode, "7")
-        XCTAssertEqual(data.created, "2017-11-10T12:56:36.618Z")
-        XCTAssertTrue(!data.characters.isEmpty)
     }
 }

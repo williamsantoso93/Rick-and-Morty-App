@@ -71,7 +71,9 @@ struct CharacterListScreen: View {
                 .presentationDragIndicator(.visible)
             }
             .task {
-                guard viewModel.list.isEmpty else { return }
+                guard
+                    viewModel.list.isEmpty && ProcessInfo.processInfo.environment["isTest"] != "1" 
+                else { return }
                 
                 await viewModel.fetchList()
             }

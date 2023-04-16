@@ -25,7 +25,7 @@ struct LocationDetailScreen: View {
                             .font(.subheadline)
                             .bold()
                         
-                        Text("13:08, 10 November 2017")
+                        Text(location.createdFormatted)
                             .font(.caption)
                     }
                 }
