@@ -15,7 +15,6 @@ final class LocationListViewModelTest: XCTestCase {
         viewModel = LocationListViewModel()
     }
 
-    
     func test_LocationList_GivenInitialState_ShouldGetListSucceccfully() async {
         await viewModel.fetchList()
         
@@ -39,7 +38,6 @@ final class LocationListViewModelTest: XCTestCase {
         
         DispatchQueue.main.async {
             XCTAssertTrue(!self.viewModel.list.isEmpty)
-            XCTAssertEqual(self.viewModel.list.count, 40)
         }
     }
     

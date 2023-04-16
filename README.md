@@ -20,7 +20,7 @@ An iOS application where user can get a list, search and get detail of Rick and 
 
 # Notes
 
-Current test coverage: 91.2%
+Current test coverage: 92.6%
 
 # Screenshot
 

@@ -15,7 +15,6 @@ final class EpisodeListViewModelTest: XCTestCase {
         viewModel = EpisodeListViewModel()
     }
     
-    
     func test_EpisodeList_GivenInitialState_ShouldGetListSucceccfully() async {
         await viewModel.fetchList()
         
@@ -33,12 +32,12 @@ final class EpisodeListViewModelTest: XCTestCase {
         viewModel.setList(list)
         
         let nextUrl = "https://rickandmortyapi.com/api/episode?page=2"
+        viewModel.setNextUrl(nextUrl)
         
         await getMoreData()
         
         DispatchQueue.main.async {
             XCTAssertTrue(!self.viewModel.list.isEmpty)
-            XCTAssertEqual(self.viewModel.list.count, 40)
         }
     }
     

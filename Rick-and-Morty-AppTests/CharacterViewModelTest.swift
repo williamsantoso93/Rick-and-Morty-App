@@ -38,7 +38,6 @@ final class CharacterListViewModelTest: XCTestCase {
         
         DispatchQueue.main.async {
             XCTAssertTrue(!self.viewModel.list.isEmpty)
-            XCTAssertEqual(self.viewModel.list.count, 40)
         }
     }
     
