@@ -4,7 +4,7 @@ An iOS application where user can get a list, search and get detail of Rick and 
 # Project Specification
 - Use Xcode 14.2
 - Use Swift 5
-- Tested using iPhone 14 Pro Max with iOS 16.2
+- Tested using iPhone 14 Pro Simulator with iOS 16.2
 
 #Architecture
 
